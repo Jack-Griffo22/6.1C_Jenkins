@@ -21,6 +21,18 @@ pipeline {
                 echo "Stage 2: Unit and Integration Tests"
                 echo "Task: Running unit tests to ensure code functions as expected and integration tests to ensure different components work together."
                 echo "Tools: JUnit for unit tests, Selenium for integration tests"
+                post {
+                    success {
+                        mail to: "jack.griffo22@gmail.com",
+                        subject: "Pipeline Status E-Mail: UNIT AND INTEGRATION TESTS",
+                        body: "Code Functions as expected, integration successful"
+                    }
+                    failure {
+                        mail to: "jack.griffo22@gmail.com",
+                        subject: "Pipeline Status E-Mail: UNIT AND INTEGRATION TESTS",
+                        body: "Code does not function corrctly, please review code."
+                    }
+                }
             }
         }
 
@@ -37,6 +49,18 @@ pipeline {
                 echo "Stage 4: Security Scan"
                 echo "Task: Performing a security scan on the code to identify any vulnerabilities."
                 echo "Tool: OWASP ZAP"
+                post {
+                    success {
+                        mail to: "jack.griffo22@gmail.com",
+                        subject: "Pipeline Status E-Mail: SECURITY SCAN",
+                        body: "Scan complete, no security vulnerabilities found"
+                    }
+                    failure {
+                        mail to: "jack.griffo22@gmail.com",
+                        subject: "Pipeline Status E-Mail: SECURITY SCAN",
+                        body: "Scan complete, ATTENTION: VULNERABILITIES FOUND!"
+                    }
+                }
             }
         }
 
@@ -53,6 +77,17 @@ pipeline {
                 echo "Stage 6: Integration Tests on Staging"
                 echo "Task: Running integration tests in the staging environment to ensure the application functions as expected in a production-like environment."
                 echo "Tools: Selenium for integration tests"
+                post {
+                    success {
+                        mail to: "jack.griffo22@gmail.com",
+                        subject: "Pipeline Status E-Mail: INTEGRATION TEST ON STAGING",
+                        body: "Integration tests for staging environmen. Application functions as expected in environment"
+                    failure {
+                        mail to: "jack.griffo22@gmail.com",
+                        subject: "Pipeline Status E-Mail: INTEGRATION TEST ON STAGING",
+                        body: "Integration tests for staging environment. Application is not functioning as expected in environment"
+                    }
+                }
             }
         }
 
