@@ -13,6 +13,7 @@ pipeline {
                 echo "Stage 1: Build"
                 echo "Task: Building the code using a build automation tool to compile and package the code."
                 echo "Tool: Maven"
+                // Maven: A build automation tool used primarily for Java projects to compile, package, and manage project dependencies.
             }
         }
 
@@ -21,6 +22,8 @@ pipeline {
                 echo "Stage 2: Unit and Integration Tests"
                 echo "Task: Running unit tests to ensure code functions as expected and integration tests to ensure different components work together."
                 echo "Tools: JUnit for unit tests, Selenium for integration tests"
+                // JUnit: A widely used testing framework in Java to write and run repeatable automated tests for unit testing.
+                // Selenium: A tool for automating web applications for testing purposes, often used for browser-based integration tests.
             }
             post {
                 success {
@@ -41,6 +44,7 @@ pipeline {
                 echo "Stage 3: Code Analysis"
                 echo "Task: Analyzing the code quality to ensure it meets industry standards."
                 echo "Tool: SonarQube"
+                // SonarQube: A code quality analysis tool that provides detailed insights and ensures that code meets industry standards.
             }
         }
 
@@ -49,6 +53,7 @@ pipeline {
                 echo "Stage 4: Security Scan"
                 echo "Task: Performing a security scan on the code to identify any vulnerabilities."
                 echo "Tool: OWASP ZAP"
+                // OWASP ZAP: A security tool used for scanning web applications to identify vulnerabilities and security issues.
             }
             post {
                 success {
