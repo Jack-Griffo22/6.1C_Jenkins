@@ -2,9 +2,9 @@ pipeline {
     agent any
 
     environment {
-        DIRECTORY_PATH = 'C:/Users/Mr_Ro/OneDrive/Desktop/Jenkins_Project'
+        DIRECTORY_PATH = 'C:\\Users\\Mr_Ro\\OneDrive\\Desktop\\Jenkins_Project'
         TESTING_ENVIRONMENT = 'staging'
-        PRODUCTION_ENVIRONMENT = '6.1C_Project'
+        PRODUCTION_ENVIRONMENT = 'Jack_Griffiths'
     }
 
     stages {
@@ -66,8 +66,15 @@ pipeline {
     }
 
     post {
-        always {
-            echo 'Pipeline completed'
+        success {
+            mail to: "jack.griffo22@gmail.com",
+            subject: "Pipeline Status E-Mail",
+            body: "Build of the pipeline was successful."
+        }
+        failure {
+            mail to: "jack.griffo22@gmail.com",
+            subject: "Pipeline Status E-Mail",
+            body: "Build of the pipeline was unsuccessful."
         }
     }
 }
